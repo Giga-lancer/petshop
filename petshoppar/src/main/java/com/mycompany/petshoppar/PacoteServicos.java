@@ -6,10 +6,14 @@ package com.mycompany.petshoppar;
 
 import java.util.Scanner;
 
-class PacoteServicosOriginal {
+/**
+ * Classe para gerenciar pacotes de serviços do Pet Shop
+ * @author Nappada
+ */
+public class PacoteServicos {
     private final Scanner sc;
 
-    public PacoteServicosOriginal(Scanner sc) {
+    public PacoteServicos(Scanner sc) {
         this.sc = sc;
     }
 
@@ -52,7 +56,26 @@ class PacoteServicosOriginal {
         System.out.println("1) Crédito\n2) Débito\n3) Pix");
         System.out.println("Pagamento processado com sucesso!");
     }
-}
-public class pacotes {
     
+    // Métodos para interface gráfica
+    public String processarPacoteAnual() {
+        return "Pacote Anual contratado com sucesso!\n\n" +
+               "Valor: R$ 2.500,00\n" +
+               "Inclui: Banho e tosa mensal, consultas ilimitadas, desconto em cirurgias\n" +
+               "Vigência: 12 meses";
+    }
+    
+    public String processarHospedagem() {
+        return "Hospedagem contratada com sucesso!\n\n" +
+               "Valor: R$ 900,00 (3 meses)\n" +
+               "Inclui: Alimentação, cuidados básicos, passeios diários\n" +
+               "Período: 3 meses";
+    }
+    
+    public String processarFuneral() {
+        return "Serviço funerário contratado com sucesso!\n\n" +
+               "Valor: R$ 650,00\n" +
+               "Inclui: Cremação, urna básica, certificado\n" +
+               "Nossos sentimentos pela perda do seu pet.";
+    }
 }

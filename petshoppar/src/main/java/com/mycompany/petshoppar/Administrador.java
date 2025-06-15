@@ -8,13 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class AdministradorOriginal {
+/**
+ * Classe para funcionalidades de administração do Pet Shop
+ * @author Nappada
+ */
+public class Administrador {
     private final Scanner sc;
-    private final CadastroClienteOriginal cadastroCliente;
+    private final CadastroCliente cadastroCliente;
     private final ServicosIndividuais servicosIndividuais;
     private List<String> servicosAgendados;
     
-    public AdministradorOriginal(Scanner sc, CadastroClienteOriginal cadastroCliente, ServicosIndividuais servicosIndividuais) {
+    public Administrador(Scanner sc, CadastroCliente cadastroCliente, ServicosIndividuais servicosIndividuais) {
         this.sc = sc;
         this.cadastroCliente = cadastroCliente;
         this.servicosIndividuais = servicosIndividuais;
@@ -76,7 +80,33 @@ class AdministradorOriginal {
     public void agendarServico(String servico) {
         servicosAgendados.add(servico);
     }
-}
-public class adm {
     
+    // Métodos para interface gráfica
+    public List<Cliente> listarTodosClientes() {
+        return cadastroCliente.getClientes();
+    }
+    
+    public Cliente buscarClientePorNome(String nome) {
+        return cadastroCliente.buscarClientePorNome(nome);
+    }
+    
+    public String excluirClientePorNome(String nome) {
+        Cliente cliente = cadastroCliente.buscarClientePorNome(nome);
+        if (cliente != null) {
+            cadastroCliente.excluirCliente(nome);
+            return "Cliente '" + nome + "' excluído com sucesso!";
+        }
+        return "Cliente '" + nome + "' não encontrado!";
+    }
+    
+    public List<String> getServicosAgendados() {
+        return new ArrayList<>(servicosAgendados);
+    }
+    
+    public String cancelarServicoAgendadoGUI(String identificador) {
+        if (servicosAgendados.removeIf(s -> s.contains(identificador))) {
+            return "Serviço cancelado com sucesso!";
+        }
+        return "Nenhum serviço encontrado para: " + identificador;
+    }
 }
